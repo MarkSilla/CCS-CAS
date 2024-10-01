@@ -33,4 +33,14 @@ export default {
   flex-grow: 1;
   padding: 20px;
 }
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 60px; 
+    padding: 100px; 
+  }
+
+  #app {
+    flex-direction: column; 
+  }
+}
 </style>

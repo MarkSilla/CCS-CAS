@@ -1,13 +1,13 @@
 <template>
-  <div class="welcome-section">
-    <div class="position-fixed top-0 start-0" style="margin-left: 60px; padding: 20px;">
-      <img src="/public/images/2s.png" alt="Logo" class="logo"> 
+  <div class="welcome-section d-flex flex-column align-items-start">
+    <div class="welcome-text" style="padding: 20px; margin-left: -230px; margin-top: -90px;">
+      <img src="/public/images/2s.png" alt="Logo" class="logo">
       <h1>Hi, Prof Name 👋</h1>
       <h2>Welcome to Check Ease!</h2>
       <p>Take and Track your Students’ Clearances and Attendance here!</p>
     </div>
     
-    <div class="cards-section position-fixed top-50 start-50 translate-middle" style="margin-top: 80px; padding: 100px;"> 
+    <div class="cards-section" style="margin-top: 5px; margin-right: 500px;">
       <div class="row justify-content-center">
         <div class="col-md-6 col-12 mb-4"> <!-- First card -->
           <div class="dashboard-card">
@@ -17,7 +17,7 @@
                 <div>
                   <h5 class="card-title">??/?? of your Classes are Cleared!</h5>
                   <p class="card-text">Manage your student’s Clearance here.</p>
-                  <router-link to="/clearance" class="btn custom-btn"><u>Check</u>></router-link> 
+                  <router-link to="/clearance" class="btn custom-btn"><u>Check</u></router-link>
                 </div>
               </div>
             </div>
@@ -32,7 +32,7 @@
                 <div>
                   <h5 class="card-title">Take Attendance</h5>
                   <p class="card-text">Take your student's Attendance here.</p>
-                  <router-link to="/attendance" class="btn custom-btn"><u>Check</u>></router-link> 
+                  <router-link to="/attendance" class="btn custom-btn"><u>Check</u></router-link>
                 </div>
               </div>
             </div>
@@ -47,7 +47,7 @@
                 <div>
                   <h5 class="card-title">Personal Information</h5>
                   <p class="card-text">Edit your Personal Information here.</p>
-                  <router-link to="#" class="btn custom-btn"><u>Edit</u> ></router-link> 
+                  <router-link to="#" class="btn custom-btn"><u>Edit</u></router-link>
                 </div>
               </div>
             </div>
@@ -66,7 +66,7 @@
                     Set up a new class with a unique <br> code,
                     allowing students to join and access their <br> attendance and clearance records.
                   </p>
-                  <router-link to="#" class="btn custom-btn"><u>Create Class</u> ></router-link>
+                  <router-link to="#" class="btn custom-btn"><u>Create Class</u></router-link>
                 </div>
               </div>
             </div>
@@ -86,19 +86,45 @@ export default {
 <style scoped>
 .welcome-section {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .logo {
-  width: 200px;
-}
-
-.cards-section {
   width: 100%; 
+  max-width: 200px; 
   height: auto; 
 }
 
+
+@media (max-width: 768px) {
+  .logo {
+    display: none; 
+  }
+  .welcome-section {
+    margin-left: 60px;
+    margin-top: auto;
+
+  }
+
+  .welcome-text {
+    margin-left: 0; 
+    padding: 20px;
+  }
+
+  .cards-section {
+    margin-top: 10px; 
+  }
+}
+
+.cards-section {
+  width: 100%;
+  height: auto;
+}
+
 .dashboard-card {
-  height: 240px; 
+  height: 240px;
 }
 
 .card.custom-card {
@@ -106,36 +132,42 @@ export default {
   color: white;
   border-radius: 15px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  width: 100%; 
-  height: 100%; 
-  transition: background-color 0.3s ease; 
+  width: 485px;  
+  height: 240px; 
+  transition: background-color 0.3s ease;
 }
 
 .card.custom-card:hover {
-  background-color: #227B94; 
+  background-color: #227B94;
   color: black;
 }
 
 .card-img {
-  width: 80px; 
-  height: 80px; 
-  object-fit: cover; 
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
 }
 
 .card-body {
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
+  overflow: hidden; 
 }
 
 .custom-btn {
-  background-color: #78B7D0; 
-  border-radius: 20px; 
-  color: white; 
-  padding: 10px 20px; 
-  transition: background-color 0.3s ease; 
+  background-color: #78B7D0;
+  border-radius: 20px;
+  color: white;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
 }
 
 .custom-btn:hover {
-  background-color: #5B97A9; 
+  background-color: #5B97A9;
+}
+
+
+.mb-4 {
+  margin-bottom: 20px; 
 }
 </style>

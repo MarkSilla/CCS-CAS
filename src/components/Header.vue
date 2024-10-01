@@ -3,7 +3,7 @@
     <!-- Email Notification Dropdown Button -->
     <div class="dropdown me-3" ref="dropdown">
       <button 
-        class="btn btn-light position-relative d-flex justify-content-center align-items-center"
+        class="btn btn-light position-relative d-flex justify-content-center align-items-center shadow-notification"
         id="dropdownMenuButton" 
         @click="toggleDropdown"
         aria-expanded="false"
@@ -22,7 +22,7 @@
     </div>
 
     <!-- Account Information -->
-    <div class="account-info d-flex flex-column justify-content-center bg-light px-3"
+    <div class="account-info d-flex flex-column justify-content-center bg-light px-3 shadow-account"
          style="height: 50px; width: 270px; border-radius: 20px;">
       <span class="fw-bold">LName, FName M.I.</span> 
       <span>202xxxxxxx@gordoncollege.edu.ph</span> 
@@ -31,7 +31,6 @@
 </template>
 
 <script>
-
 export default {
   name: "Header",
   methods: {
@@ -71,6 +70,15 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+
+.shadow-account {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.shadow-notification {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
 }
 
 span {
