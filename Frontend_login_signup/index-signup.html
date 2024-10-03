@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-in Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            padding: 20px;
+        }
+
+        .background-container {
+            position: fixed;
+            z-index: -1;
+        }
+
+        .square {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #645394;
+            opacity: 0.8;
+            border-radius: 10%;
+            animation: float 10s infinite ease-in-out, rotate 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0); }
+            50% { transform: translateY(50vh) translateX(30px); }
+            100% { transform: translateY(-100vh) translateX(-30px); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div id="app" class="container">
+        <div class="background-container">
+            <div class="square" v-for="n in 26" :key="n"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 order-2 order-md-1 d-flex flex-column justify-content-center mt-5">
+                <div class="mb-5">
+
+                    <div class="logo-container scale-150 mb-4">
+                        <img src="checkEaselogo.png" alt="logo here" style="width: 415px; height: 125px;" class="mt-n5 mh-125px mw-425px">
+                    </div>
+
+                    <h1>What is Check Ease?</h1>
+                    <p>
+                        A web application that simplifies the process of managing and viewing attendance and clearance records
+                        . It allows students to easily track their attendance and clearance status, while faculty and/or student
+                        organizations can update these records.
+                    </p>
+                    <p class="text-secondary">
+                        <a href="#" class="text-decoration-none">About the developers?</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 order-1 order-md-2 d-flex justify-content-center flex-column">
+                
+                <h1 class="text-start"><b>Sign up</b></h1>
+                <p class="text-start text-secondary">Alreadyy have an account?
+                    <a href="index-login.html" class="text-decoration-none">Click here to Log in!</a>
+                </p>
+
+                <div class="box-container col-md-16 mb-5 h-75 w-75 d-block">
+                    <form @submit.prevent="submitForm" class="align-items-center w-100">
+                    
+                        <div class="mb-3 text-start">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" id="username" v-model="username" class="form-control" required>
+                        </div>
+                    
+                        <div class="mb-3 text-start">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" v-model="email" class="form-control" required>
+                        </div>
+                    
+                        <div class="mb-3 text-start">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" v-model="password" class="form-control"] required>
+                        </div>
+                    
+                        <div class="mb-3 text-start">
+                            <label for="role" class="form-label">Role</label>
+                            <select id="role" v-model="role" class="form-select" required>
+                                <option value="" disabled selected>Select your role</option>
+                                <option value="student">Student</option>
+                                <option value="teacher">Teacher</option>
+                            </select>
+                        </div>
+                    
+                        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                username: '',
+                email: '',
+                password: '',
+                role: ''
+            },
+            mounted() {
+                const squares = document.querySelectorAll('.square');
+                squares.forEach(square => {
+                    square.style.top = Math.random() * 90 + 'vh';
+                    square.style.left = Math.random() * 150 + 'vw';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
