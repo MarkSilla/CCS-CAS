@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log-in Page</title>
+    <title>Sign-up Page</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Font -->
@@ -57,17 +57,17 @@
             <div class="square" v-for="n in 26" :key="n"></div>
         </div>
         <div class="row">
-            <div class="col-md-6 order-2 order-md-1 d-flex flex-column justify-content-center mt-5">
+            <div class="col-md-6 order-2 order-md-1 d-flex flex-column justify-content-center flex-column align-items-center text-center mt-5">
                 <div class="mb-5">
 
-                    <div class="logo-container scale-150 mb-4">
+                    <div class="logo-container mb-4">
                         <img src="checkEaselogo.png" alt="logo here" style="width: 415px; height: 125px;" class="mt-n5 mh-125px mw-425px">
                     </div>
 
                     <h1>What is Check Ease?</h1>
                     <p>
-                        A web application that simplifies the process of managing and viewing attendance and clearance records
-                        . It allows students to easily track their attendance and clearance status, while faculty and/or student
+                        A web application that simplifies the process of managing and viewing attendance and clearance records.
+                        It allows students to easily track their attendance and clearance status, while faculty and/or student
                         organizations can update these records.
                     </p>
                     <p class="text-secondary">
@@ -76,27 +76,39 @@
                 </div>
             </div>
 
-            <div class="col-md-6 order-1 order-md-2 d-flex justify-content-center flex-column">
+            <div class="col-md-6 order-1 order-md-2 d-flex justify-content-center flex-column align-items-center mb-3 mt-6">
                 
-                <h1 class="text-start"><b>Sign up</b></h1>
+                <h1 class="text-start mt-4"><b>Sign up</b></h1>
                 <p class="text-start text-secondary">Alreadyy have an account?
                     <a href="index-login.html" class="text-decoration-none">Click here to Log in!</a>
                 </p>
 
-                <div class="box-container col-md-16 mb-5 h-75 w-75 d-block">
+                <div class="box-container col-md-16 mb-5 h-100 w-75 d-block">
                     <form @submit.prevent="submitForm" class="align-items-center w-100">
-                    
-                        <div class="mb-3 text-start">
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <label for="firstname" class="form-label">First name</label>
+                                <input type="text" id="username" v-model="username" class="form-control" required>
+                            </div>
+                        
+                            <div class="col-md-6 mb-2">
+                                <label for="lastname" class="form-label">Last name</label>
+                                <input type="email" id="email" v-model="email" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-2 text-start">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" id="username" v-model="username" class="form-control" required>
                         </div>
                     
-                        <div class="mb-3 text-start">
+                        <div class="mb-2 text-start">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" id="email" v-model="email" class="form-control" required>
                         </div>
                     
-                        <div class="mb-3 text-start">
+                        <div class="mb-2 text-start">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" id="password" v-model="password" class="form-control"] required>
                         </div>
@@ -126,6 +138,8 @@
         new Vue({
             el: '#app',
             data: {
+                firstname: '',
+                lastname: '',
                 username: '',
                 email: '',
                 password: '',
