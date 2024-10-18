@@ -66,12 +66,32 @@
                     Set up a new class with a unique <br> code,
                     allowing students to join and access their <br> attendance and clearance records.
                   </p>
-                  <router-link to="#" class="btn custom-btn"><u>Create Class</u></router-link>
+                  <button @click="showForm = true" class="btn custom-btn"><u>Create Class</u></button>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Pop-up form -->
+        <div v-if="showForm" class="popup-form">
+          <div class="popup-content">
+            <button @click="showForm = false" class="close-btn">&times;</button>
+            <h3>Create a New Class</h3>
+            <form @submit.prevent="submitForm">
+              <div class="form-group">
+                <label for="className">Class Name:</label>
+                <input type="text" id="className" v-model="className" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="classCapacity">Class Capacity:</label>
+                <input type="number" id="classCapacity" v-model="classCapacity" class="form-control">
+              </div>
+              <button type="submit" class="btn custom-btn">Create</button>
+            </form>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -80,7 +100,26 @@
 <script>
 export default {
   name: 'HomeView',
+  data() {
+    return {
+      showForm: false,
+      className: '',
+      classCapacity: ''
+    };
+  },
+  methods: {
+    submitForm() {
+      if (this.className && this.classCapacity) {
+        // Handle form submission logic
+        console.log('Form submitted with Class Name:', this.className, 'and Class Capacity:', this.classCapacity);
+        this.showForm = false; // Close the form after submission
+      } else {
+        alert('Please fill in both fields.');
+      }
+    }
+  }
 };
+
 </script>
 
 <style scoped>
@@ -169,5 +208,62 @@ export default {
 
 .mb-4 {
   margin-bottom: 20px; 
+}
+.popup-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  width: 353px;
+  height: 331px;
+  background-color: #DBF4F8;
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #78B7D0;
+  border-radius: 15px;
+}
+
+.btn.custom-btn {
+  background-color: #78B7D0;
+  border-radius: 20px;
+  color: white;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+}
+
+.btn.custom-btn:hover {
+  background-color: #5B97A9;
 }
 </style>

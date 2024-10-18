@@ -1,8 +1,8 @@
 <template>
   <div id="app" class="d-flex">
-    <Sidebar />
+    <Sidebar v-if="!isAuthPage" />
     <div class="main-content flex-grow-3">
-      <Header />
+      <Header v-if="!isAuthPage" />
       <div class="container-fluid">
         <RouterView />
       </div>
@@ -18,6 +18,11 @@ export default {
   components: {
     Sidebar,
     Header,
+  },
+  computed: {
+    isAuthPage() {
+      return this.$route.meta.layout === 'empty';
+    }
   }
 };
 </script>
@@ -33,6 +38,7 @@ export default {
   flex-grow: 1;
   padding: 20px;
 }
+
 @media (max-width: 768px) {
   .main-content {
     margin-left: 60px; 
