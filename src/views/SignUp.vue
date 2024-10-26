@@ -113,7 +113,7 @@ body {
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 20px;
-  width: 600px; /* Keep the width consistent */
+  width: 600px; 
 }
 
 .background-container {
